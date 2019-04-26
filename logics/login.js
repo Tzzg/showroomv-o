@@ -57,13 +57,14 @@ export default class Login {
                                 }
                             })
                             if (register) {
+                              console.log(userResult)
                                 await wx.login({
                                     success: async function(loginResult) {
                                         await self._wechatLogin({
                                             login_type: 'wechat_mini',
                                             wechat_mini_code: loginResult.code,
-                                            wechat_username: userResult.userInfo.nickName,
-                                            wechat_avatar: userResult.userInfo.avatarUrl
+                                          encryptedData: userResult.encryptedData,
+                                          iv: userResult.iv, 
                                         })
                                     }
                                 })
@@ -110,8 +111,7 @@ export default class Login {
                             const login = await self._wechatLogin({
                                 login_type: 'wechat_mini',
                                 wechat_mini_code: res.code,
-                                wechat_username: userResult.userInfo.nickName,
-                                wechat_avatar: userResult.userInfo.avatarUrl
+                              encryptedData: userResult.encryptedData,                                  iv: userResult.iv, 
                             })
 
                             if (login === false && autoRegister === true) {
