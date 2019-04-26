@@ -1,0 +1,38 @@
+help-item {
+    position:relative;
+    padding:12px 15px;
+    display:flex;
+    align-items:center;
+    line-height:1.4;
+    font-size:14px;
+    background: #ffffff;
+    border-bottom: 1px solid #F8F8F8;
+}
+
+.headline {
+    padding: 5px 15px;
+    font-size: 16px;
+}
+
+.help-list {
+    background: #ffffff;
+}
+
+.quiz {
+    display: flex;
+    flex-direction: column;
+}
+
+.quiz .question {
+    font-weight: bold;
+}
+
+.quiz .answer {
+    font-size: 12px;
+    margin-top: 8px;
+    color: #666666;
+}
+
+.icon-feedback {
+    font-size: 0;
+}

@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "身份证信息",
+    "usingComponents": {
+        "fa-panel": "../../../../ui/panel/index",
+        "fa-field": "../../../../ui/field/index",
+        "fa-datetime-picker": "../../../../ui/datetime-picker/index",
+        "fixed-bottom": "../../../../components/common/fixedBottom/index",
+        "fa-cell": "../../../../ui/cell/index",
+        "fa-button": "../../../../ui/btn/index",
+        "fa-cell-group": "../../../../ui/cell-group/index"
+    }
+}

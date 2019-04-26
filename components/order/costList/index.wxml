@@ -1,0 +1,36 @@
+<view class="order-cost-box">
+    <view class="title-section" bindtap="orderCostToggle">
+        <view class="title">
+            <label>支付金额</label>
+            <text>¥{{totalCost}}</text>
+            <text class="tips">(含运费)</text>
+        </view>
+        <view class="action {{orderFeeDisplay?'show':'hide'}}">
+            <view wx:if="{{orderFeeDisplay}}">收起明细</view>
+            <view wx:else>查看明细</view>
+            <view class="arrow {{orderFeeDisplay?'down':''}}">
+                <image src="/themes/default/shops/arrow-right.png" mode="aspectFit" style="width: 10px; height: 10px;" />
+            </view>
+        </view>
+    </view>
+    <view class="order-cost-list" wx:if="{{orderFeeDisplay}}">
+        <view class="item">
+            <view class="row">
+                <label>商品总额：</label>
+                <text>¥{{goodsTotal}}</text>
+            </view>
+            <view class="row">
+                <label>运费：</label>
+                <text>¥{{freight}}</text>
+            </view>
+            <view class="row">
+                <label>清关/税费：</label>
+                <text>¥{{customsClearanceTax}}</text>
+            </view>
+        </view>
+        <view class="footer">
+            <label>实付款：</label>
+            <text>¥{{totalCost}}</text>
+        </view>
+    </view>
+</view>

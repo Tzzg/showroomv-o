@@ -1,0 +1,125 @@
+<view style="background-color:{{backgroundColor}};display: block;overflow: hidden">
+<!-- <button open-type="getUserInfo">获取用户信息</button> -->
+    <!-- <view wx:for="{{pageData}}" wx:key="key" wx:for-index="page-data" wx:for-item="item">
+        <block wx:if="{{item.type === 'image_ads'}}">
+            <page-banner dataSource="{{item}}" bind:click="onBannerClick"/>
+        </block>
+        <block wx:elif="{{item.type === 'image_nav'}}">
+            <page-grid-nav-bar dataSource="{{item}}" bind:click="onGridNavBarClick"/>
+        </block>
+        <block wx:elif="{{item.type === 'goods'}}">
+            <page-goods-list dataSource="{{item}}" bind:click="onGoodsClick"/>
+        </block>
+        <block wx:elif="{{item.type === 'goods_list'}}">
+            <page-goods-list dataSource="{{item}}" bind:click="onGoodsClick"/>
+        </block>
+        <block wx:elif="{{item.type === 'separator'}}">
+            <page-divider dataSource="{{item}}"/>
+        </block>
+        <block wx:elif="{{item.type === 'goods_search'}}">
+            <page-goods-search dataSource="{{item}}" bind:click="onSearchClick"/>
+        </block>
+        <block wx:elif="{{item.type === 'shop_window'}}">
+            <page-pic-window dataSource="{{item}}" bind:click="onShopWindowClick"/>
+        </block>
+        <block wx:elif="{{item.type === 'top_menu'}}">
+            <page-icon-nav-bar dataSource="{{item}}" bind:click="onIconNavClick"/>
+        </block>
+        <block wx:elif="{{item.type === 'auxiliary_blank'}}">
+            <page-placeholder-line dataSource="{{item}}"/>
+        </block>
+        <block wx:elif="{{item.type === 'title'}}">
+            <page-column-title dataSource="{{item}}"/>
+        </block>
+        <block wx:elif="{{item.type === 'text_nav'}}">
+            <page-text-nav dataSource="{{item}}" bind:click="onTextNavClick"/>
+        </block>
+        <block wx:elif="{{item.type === 'video'}}">
+            <page-video dataSource="{{item}}"/>
+        </block>
+    </view> -->
+
+
+<!-- home product list -->
+<!-- <view class='content'>
+  <view class="left">
+  <block wx:for="{{listHomeProductsData.data}}" wx:key=""  wx:for-item="item">
+    <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+  </block>
+  </view>
+  <view class="right">
+  <block wx:for="{{listHomeProductsData.data}}" wx:key=""  wx:for-item="item">
+    <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+  </block>
+  </view>
+</view>
+<template name="item">
+  <view class="item">
+    <image style="background-color: #eeeeee;" class="item-img" src="{{image}}" mode="aspectFill"></image>
+    <view class="item-title-box">
+      <navigator url="url" class="item-title">{{title}}</navigator> 
+      <image class="arrow" src="../../themes/default/goods/collect.png"></image>  
+    </view>
+    <view class="name">
+      <image class="item-ava" src="{{avatar}}"></image>    
+      <text class="name-title">{{name}}</text>
+      <view class="heart_">
+        <image class="heart" src="../../image/heart.png"></image>
+        <text>{{heart_num}}</text>
+      </view>
+    </view>
+  </view>
+</template> -->
+<!-- home product list -->
+</view>
+
+<view class="header-wrapper">
+  <view class="top-search">
+    <page-goods-search dataSource="{{item}}" bind:click="onSearchClick"/>
+  </view>
+  <!-- <block>
+    <view class="section section_gap">
+      <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+        <view id="green" class="scroll-view-item_H bc_green">推荐</view>
+        <view id="red" class="scroll-view-item_H bc_red">古典</view>
+        <view id="yellow" class="scroll-view-item_H bc_yellow">轻奢</view>
+        <view id="blue" class="scroll-view-item_H bc_blue">新奇</view>
+        <view id="blue" class="scroll-view-item_H bc_blue">3C</view>
+      </scroll-view>
+    </view>
+  </block> -->
+<view class="home-category goods-category-style-3">
+  <aside>
+    <scroll-view scroll-x="true" scroll-with-animation="true">
+      <details data-id="0" data-index="-1" bindtap="style3CategoryClick" data-category-id="all">
+        <text class="{{style3.categoryClickIndex === -1 ? 'active' : ''}}">全部</text>
+      </details>
+      <block wx:for="{{style3.categoryList}}" wx:key="item" wx:for-index="index">
+        <details data-id="{{item.id}}" data-index="{{index}}" data-category-id="{{item.id}}" bindtap="style3CategoryClick">
+          <text class="{{style3.categoryClickIndex === index ? 'active' : ''}}">{{item.name}}</text>
+        </details>
+      </block>
+    </scroll-view>
+  </aside>
+</view>
+</view>
+<!-- 列表 -->
+
+<view class="content-wrapper">
+<view class="banner-sliders">
+  <page-banner dataSource="{{banners}}" bind:click="onBannerClick"/>
+</view>
+<view class="shop-cate-list">
+  <block wx:for="{{shopsCircles}}" wx:key="item" wx:for-index="index">
+    <view class="shop-cate">
+      <image src="{{item.img}}"></image>
+      <text>{{item.title}}</text>
+    </view>
+  </block>
+</view>
+<common-waterfall id="water_fall_id" class="waterfall-list" d-value="{{dValue}}" listData="{{style3.list}}" wx:key=""  wx:for-item="item" bind:heightlog="heightlog"></common-waterfall>
+</view>
+<!-- loading -->
+<view style='height: 200rpx; text-align: center; line-height: 1; padding: 86rpx 0; font-size: 28rpx; color: #999;'>
+  <text hidden='{{!isLoading}}'>正在加载...</text>
+</view>

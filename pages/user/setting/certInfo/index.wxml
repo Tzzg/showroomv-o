@@ -1,0 +1,33 @@
+<view class="user-setting-userinfo">
+    <fa-panel>
+        <fa-cell-group>
+            <view class="info red">应海关要求，购买跨境商品需要提供订购人身份信息（请与支付账号实名信息相同）本信息仅用于海关清关，平台将保证您的个人信息安全。</view>
+            <fa-cell title="姓名">
+                <input slot="footer" id="cert_info_name" placeholder="请输入姓名" bindinput="realNameInput" value="{{realName}}" />
+            </fa-cell>
+            <fa-cell title="身份证号">
+                <input slot="footer" id="cert_info_code" class="cert-code" bindinput="certCodeInput" placeholder="请输入身份证号码" value="{{certCode}}" />
+            </fa-cell>
+        </fa-cell-group>
+    </fa-panel>
+    <view class="headline">添加图片</view>
+    <fa-panel>
+        <fa-field
+                type="uploader"
+                title=""
+                uploaderButtonText="{{uploaderButtonText}}"
+                uploaderFormData="{{uploaderFormData}}"
+                uploaderUrl="{{uploaderUrl}}"
+                uploaderHeader="{{uploaderHeader}}"
+                uploaderFiles="{{uploaderFiles}}"
+                uploaderCount="{{uploaderCount}}"
+                uploaderAllowDel="true"
+                bind:success="onUploadFileSuccess"
+                bind:delete="onUploadFileDelete"
+        >
+        </fa-field>
+    </fa-panel>
+</view>
+<fixed-bottom>
+    <fa-button size="large" type="danger" bindtap="onSubmit">保存</fa-button>
+</fixed-bottom>

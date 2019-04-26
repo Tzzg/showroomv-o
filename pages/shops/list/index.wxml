@@ -1,0 +1,46 @@
+<view class="header-wrapper">
+<login-view class="sub btn-collect" bind:success="onLoginSuccess">
+  <view class="top-search">
+    <page-goods-search dataSource="{{item}}" bind:click="onSearchClick"/>
+  </view>
+  <!-- <block>
+    <view class="section section_gap">
+      <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+        <view id="green" class="scroll-view-item_H bc_green">推荐</view>
+        <view id="red" class="scroll-view-item_H bc_red">古典</view>
+        <view id="yellow" class="scroll-view-item_H bc_yellow">轻奢</view>
+        <view id="blue" class="scroll-view-item_H bc_blue">新奇</view>
+        <view id="blue" class="scroll-view-item_H bc_blue">3C</view>
+      </scroll-view>
+    </view>
+  </block> -->
+<view class="home-category goods-category-style-3">
+  <aside>
+    <scroll-view scroll-x="true" scroll-with-animation="true">
+      <details data-id="0" data-index="-1" bindtap="style3CategoryClick" data-category-id="all">
+        <text class="{{shops.categoryClickIndex === -1 ? 'active' : ''}}">全部</text>
+      </details>
+      <block wx:for="{{shops.categoryList}}" wx:key="item" wx:for-index="index">
+        <details data-id="{{item.id}}" data-index="{{index}}" data-category-id="{{item.id}}" bindtap="style3CategoryClick">
+          <text class="{{shops.categoryClickIndex === index ? 'active' : ''}}">{{item.name}}</text>
+        </details>
+      </block>
+    </scroll-view>
+  </aside>
+</view>
+</login-view>
+</view>
+<!-- 列表 -->
+
+<view class="content-wrapper">
+<login-view class="sub btn-collect" bind:success="onLoginSuccess">
+<view class="banner-sliders">
+  <page-banner dataSource="{{banners}}" bind:click="onBannerClick"/>
+</view>
+<common-waterfall-shops id="waterfall_shops_id" class="waterfall-list" d-value="{{dValue}}" listData="{{shops.list}}" wx:key=""  wx:for-item="item" ></common-waterfall-shops>
+</login-view>
+</view>
+<!-- loading -->
+<view style='height: 200rpx; text-align: center; line-height: 1; padding: 86rpx 0; font-size: 28rpx; color: #999;'>
+  <text hidden='{{!isLoading}}'>正在加载...</text>
+</view>

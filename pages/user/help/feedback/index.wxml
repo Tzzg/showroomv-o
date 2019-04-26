@@ -1,0 +1,36 @@
+<view style="background-color:#F8F8F8;display: block;overflow: hidden;margin-bottom:100px;">
+    <view>
+        <fa-panel>
+            <fa-field
+                    type="textarea"
+                    title=""
+                    class="feedback"
+                    placeholder="写下您对功能上的建议或发现的问题，谢谢～～"
+                    value="{{content}}"
+                    bind:change="onContentChange"
+            >
+            </fa-field>
+        </fa-panel>
+        <view class="headline">添加图片</view>
+        <fa-panel>
+            <fa-field
+                    type="uploader"
+                    title=""
+                    uploaderButtonText="{{uploaderButtonText}}"
+                    uploaderFormData="{{uploaderFormData}}"
+                    uploaderUrl="{{uploaderUrl}}"
+                    uploaderHeader="{{uploaderHeader}}"
+                    uploaderFiles="{{uploaderFiles}}"
+                    uploaderCount="{{uploaderCount}}"
+                    uploaderAllowDel="true"
+                    bind:success="onUploadFileSuccess"
+                    bind:delete="onUploadFileDelete"
+            >
+            </fa-field>
+        </fa-panel>
+        
+    </view>
+    <fixed-bottom>
+        <fa-button type="danger" size="large" bind:btnclick="onSubmit">提交反馈</fa-button>
+    </fixed-bottom>
+</view>

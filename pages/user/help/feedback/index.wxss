@@ -1,0 +1,13 @@
+.feedback textarea {
+    min-height: 200px;
+    background-color: #ffffff;
+}
+
+.feedback view {
+    padding: 0 !important;
+}
+
+.headline {
+    padding: 10px 15px;
+    font-size: 16px;
+}

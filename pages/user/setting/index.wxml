@@ -1,0 +1,23 @@
+<view class="user-setting">
+    <fa-panel>
+        <fa-cell is-link title="设置信息" url="/pages/user/setting/userinfo/index">
+        <block wx:if="{{userInfo.profile.avatar}}">
+            <image slot="icon" src="{{userInfo.profile.avatar}}"
+                   mode="aspectFit" class="avatar" />
+        </block>
+        <block wx:else>
+            <image slot="icon" src="{{userInfoWechat.avatar}}"
+                   mode="aspectFit" class="avatar" />
+        </block>
+        </fa-cell>
+    </fa-panel>
+    <fa-panel>
+        <fa-cell-group>
+            <!-- <fa-cell is-link title="修改密码" url="/pages/user/editPassword/index"></fa-cell> -->
+            <fa-cell is-link title="身份证信息" url="/pages/user/setting/certInfo/index"></fa-cell>
+        </fa-cell-group>
+    </fa-panel>
+</view>
+<!-- <fixed-bottom>
+    <fa-button size="large" bind:btnclick="logout">退出</fa-button>
+</fixed-bottom> -->

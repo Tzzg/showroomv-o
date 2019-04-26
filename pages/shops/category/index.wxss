@@ -1,0 +1,98 @@
+.content{
+  margin: 0 20rpx;
+  text-align: justify;
+}
+.item{
+  background-color: #fff;
+  margin: 1%;
+  margin-bottom: 20rpx;
+  display: inline-block;
+  border-radius: 8rpx;
+  box-shadow:0 0 3px #888888;
+  width: 100%;
+}
+.item-ava{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  margin-right: 10rpx;
+}
+.heart{
+  width: 30rpx;
+  height: 26rpx;
+  margin-right: 8rpx;
+}
+.heart_{
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+.item-img{
+  width: 100%;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+}
+.item-title{
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:;
+  overflow: hidden;
+  font-family: 'PingFang SC-Medium';
+  color: #1e1e1e;
+  margin: 15rpx;
+  line-height: 27rpx;
+}
+.item .name{
+  display: flex;
+  padding: 0 15rpx;
+  margin-top: 20rpx;
+  padding-bottom: 10rpx;
+  align-items: center;
+  font-size: 22rpx;
+  color: #1e1e1e;
+  font-family: 'PingFang SC-Medium';
+}
+.name image{
+  flex: 0 0 40rpx;
+}
+.item-title-box{
+  display: flex;
+  position: relative;
+}
+.name-title{
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 190rpx;
+}
+.name text:last-child{
+  flex: 0 0 30rpx;
+  color: #c4c4c4;
+  text-decoration: underline;
+  line-height: 10rpx;
+}
+.left,.right{
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+.right{
+  float: right;
+}
+
+.shop-name-box {
+  padding: 15rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.shop-name-box .shop-name {
+  display: flex;
+  align-items: center;
+}
+
+/* .shop_name {
+  display: flex;
+} */

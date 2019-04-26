@@ -1,0 +1,28 @@
+<!--template/list/list.wxml-->
+
+<image wx:for="{{images}}" data-index='{{index}}'  wx:key="" src="{{item.image}}" hidden bindload="imgOnload"></image>
+
+<view class="img-group shops-item-box" style='height: {{wrapperHeight}}px'>
+  <view class='img-wrapper' wx:for="{{list}}" wx:key="{{index}}" wx:key="" style="width: calc(50% - {{3*gap/2}}px); top: {{item.top}}px; left: {{item.left}}px">
+    <detail bindtap="goShopsDetail" data-id="{{item.id}}">
+    <image mode='widthFix' src="{{item.image}}" class="shop-img" style="height:{{item.showHeight}}px; border-radius: 8rpx;"></image>
+    <view class="contnet-wrapper">
+    <view class="title textview-single-line">{{item.title}}</view>
+    <view class="address item-icon-box">
+      <image class="icon" src="../../../themes/default/shops/location.png"></image>
+      <text class="gray textview-single-line">{{item.address}}</text>
+    </view>
+    <view class="shop-name-box">
+      <view class="shop-name item-icon-box">
+        <image class="avatar icon" src="{{item.avatar}}"></image>
+        <text class="name-title">{{item.shop_owner}}</text>
+      </view>
+      <view class="heart_box item-icon-box" catchtap='voteShop' hover-stop-propagation='true' data-id="{{item.id}}">
+        <image class="heart icon" src="../../../themes/default/shops/heart.png"></image>
+        <text>{{item.like_num}}</text>
+      </view>
+    </view>
+    </view>
+    </detail>
+  </view>
+</view>

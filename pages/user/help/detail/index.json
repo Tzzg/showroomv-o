@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "帮助与客服",
+  "usingComponents": {
+    "fa-cell-group": "../../../../ui/cell-group/index",
+    "fa-cell": "../../../../ui/cell/index",
+    "fa-panel": "../../../../ui/panel/index",
+    "fa-badge": "../../../../ui/badge/index"
+  }
+}

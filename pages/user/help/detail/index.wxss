@@ -1,0 +1,18 @@
+.help-info-title {
+    margin: 5px 15px;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.help-info-content {
+    margin: 5px 15px;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.help-body-image {
+    width: 100%;
+    margin: 15px 0
+}

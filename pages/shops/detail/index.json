@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "Shop Detail",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "common-waterfall-goods": "../../../components/common/waterfallGoods/list"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "Shop System",
+  "usingComponents": {
+    "unlogin-ucenter": "../../components/login/ucenter/index",
+    "login-view": "../../components/login/view/index",
+    "fa-cell-group": "../../ui/cell-group/index",
+    "fa-cell": "../../ui/cell/index",
+    "fa-panel": "../../ui/panel/index",
+    "fa-badge": "../../ui/badge/index"
+  }
+}

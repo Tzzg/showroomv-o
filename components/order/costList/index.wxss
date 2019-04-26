@@ -1,0 +1,75 @@
+.order-cost-list {
+    background-color: #fff;
+    padding: 15px 0px;
+    border-top: 1px dashed #F8F8F8;
+}
+
+.order-cost-list .item .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0 15px;
+}
+
+.order-cost-list .item .row label {
+    font-size: 14px;
+    font-weight: bold
+}
+
+.order-cost-list .item .row text {
+    font-size: 12px;
+    font-weight: bold
+}
+.order-cost-list .footer{
+    text-align: right;
+    padding: 10px 15px 0 15px;
+    border-top: 1px solid #F8F8F8;
+}
+.order-cost-list .footer label{
+    font-size: 12px;
+}
+.order-cost-list .footer text{
+    font-size: 14px;
+    font-weight: bold;
+    color:#ff4400;
+}
+
+.order-cost-box .title-section{
+    padding: 12px 15px;
+    font-size: 16px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-cost-box .title-section .title text {
+    color: #ff4400;
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+.order-cost-box .title-section .title text:last-child {
+    margin-left: -5px;
+}
+
+.order-cost-box .title-section .title text.tips {
+    font-size: 12px;
+    color: #999999;
+    font-weight: normal;
+}
+
+.order-cost-box .action {
+    position: relative;
+    padding-right: 13px;
+}
+
+.order-cost-box .action .arrow image {
+    position: absolute;
+    top: calc(50% - 5px);
+    right: 0;
+    transition: transform .3s linear;
+}
+
+.order-cost-box .action .arrow.down image{
+    transform: rotate(90deg);
+}

@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "意见反馈",
+  "usingComponents": {
+    "fa-cell-group": "../../../../ui/cell-group/index",
+    "fa-cell": "../../../../ui/cell/index",
+    "fa-panel": "../../../../ui/panel/index",
+    "fa-badge": "../../../../ui/badge/index",
+    "fa-field": "../../../../ui/field/index",
+    "fixed-bottom": "../../../../components/common/fixedBottom/index",
+    "fa-button": "../../../../ui/btn/index"
+  }
+}

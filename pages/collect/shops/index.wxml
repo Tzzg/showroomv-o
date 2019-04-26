@@ -1,0 +1,37 @@
+<view style="background-color:#F8F8F8;display: block;overflow: hidden">
+    <block wx:if="{{list.length > 0}}">
+        <view class="goods-list">
+            <section>
+                <block wx:for="{{list}}" wx:key="key" wx:for-index="page-data" wx:for-item="item">
+                    <details style="width:{{imageWidth}}px" bindtap="goShopsDetail" data-id="{{item.id}}">
+                        <image src="{{item.image}}"  style="width:{{imageWidth}}px;height: {{imageWidth}}px" mode="aspectFill" />
+                        <view class="shop-content">
+                            <text>{{item.title}}</text>
+                            <view class="address item-box">
+                                <image src="../../../themes/default/shops/location.png" class="location"></image>
+                                <text>{{item.address}}</text>
+                            </view>
+                            <view class="shop-footer">
+                                <view class="shop-owner item-box">
+                                    <image src="{{item.avatar}}" class="avatar"></image>
+                                    <text>{{item.shop_owner}}</text>
+                                </view>
+                                <view class="shop-like item-box">
+                                    <image src="../../../themes/default/shops/heart.png" class="heart"></image>
+                                    <text>{{item.like_num}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </details>
+                </block>
+            </section>
+            <view class="line"></view>
+        </view>
+    </block>
+    <block wx:if="{{list.length===0}}">
+        <view class="list-empty">
+            <image src="/themes/default/order/list-empty.png" mode="aspectFill"></image>
+            <text>暂无相关数据</text>
+        </view>
+    </block>
+</view>

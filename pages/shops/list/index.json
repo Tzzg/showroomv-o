@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "好店",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "page-banner": "../../../components/page/banner/index",
+    "login-view": "../../../components/login/view/index",
+    "common-waterfall-shops": "../../../components/common/waterfallShops/list"
+  }
+}

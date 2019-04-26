@@ -1,0 +1,42 @@
+<view class="user-setting-userinfo">
+    <fa-panel>
+        <fa-cell-group>
+            <fa-cell title="头像">
+                <image slot="footer" src="{{userImg}}"
+                       mode="aspectFit" class="avatar" bindtap="onUploadAvatar" />
+            </fa-cell>
+            <fa-cell title="昵称" class="nickname">
+                <input slot="footer" bindinput="nicknameInput" placeholder="请输入昵称" value="{{nickname}}" />
+            </fa-cell>
+            <fa-cell class="empty-cell"></fa-cell>
+        </fa-cell-group>
+            <fa-field
+                    
+                    type="picker"
+                    title="性别"
+                    placeholder="请选择"
+                    range="{{genderStateList}}"
+                    value="{{gender}}"
+                    bind:change="onGenderStateChange"
+                    right="true"
+            >
+            </fa-field>
+
+            <view class="user_info_section">
+                <view class="section__title">生日</view>
+                <picker mode="date" value="{{birth}}" start="1970-01-01" end="2030-01-01" bindchange="bindDateChange">
+                    <view class="picker">{{birth}}</view>
+                </picker>
+            </view>
+    </fa-panel>
+
+    <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetbindchange">
+        <block wx:for="{{actionSheetItems}}" wx:key="unique">
+            <action-sheet-item class="action-sheet-item" bindtap="{{item.bindtap}}">{{item.txt}}</action-sheet-item>
+        </block>
+        <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+    </action-sheet>
+</view>
+<fixed-bottom>
+    <fa-button size="large" type="danger" bindtap="onSubmit">保存</fa-button>
+</fixed-bottom>

@@ -1,0 +1,14 @@
+<view style="background-color:#FFFFFF;display: block;overflow: hidden;margin-bottom:100px;">
+    <view>
+        <view class="help-info-title">{{info.title}}</view>
+        <view class="help-info-content">
+        <block wx:for="{{info.body}}" wx:key="key" wx:for-index="index" wx:for-item="item">
+ 
+           <view class="info-inner">
+                <image wx:if="{{item.type == 'image'}}" class="help-body-image" src="{{item.value.url}}" mode="scaleToFill" data-url="{{item.value.url}}" />
+                <text wx:if="{{item.type == 'text'}}" class="content">{{item.value.content}}</text>
+            </view>
+        </block>
+        </view>
+    </view>
+</view>

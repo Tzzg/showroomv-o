@@ -1,0 +1,22 @@
+<!--template/list/list.wxml-->
+
+<image wx:for="{{images}}" data-index='{{index}}'  wx:key="" src="{{item.image}}" hidden bindload="imgOnload"></image>
+
+<view class="img-group shops-item-box" style='height: {{wrapperHeight}}px'>
+  <view class='img-wrapper' wx:for="{{list}}" wx:key="id" id="{{item.id}}" wx:key="" style="width: calc(50% - {{3*gap/2}}px); top: {{item.top}}px; left: {{item.left}}px">
+    <detail bindtap="goGoodsDetail" data-id="{{item.id}}">
+    <image mode='widthFix' src="{{item.image}}" class="shop-img" style="height:{{item.showHeight}}px; border-radius: 8rpx;"></image>
+    <view class="contnet-wrapper">
+    <view class="title textview-single-line">{{item.title}}</view>
+    <text class="gray">{{item.desc}}</text>
+    <view class="price-shop-box">
+      <view class="price">
+        <!-- <image class="avatar icon" src="{{item.avatar}}"></image> -->
+        <text class="current">{{item.price}}</text>
+        <text class="original">{{item.price_original}}</text>
+      </view>
+    </view>
+    </view>
+    </detail>
+  </view>
+</view>

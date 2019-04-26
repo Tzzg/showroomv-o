@@ -1,0 +1,41 @@
+<view style="background-color:#F8F8F8;display: block;overflow: hidden;margin-bottom:100px;">
+    <view>
+        <fa-panel>
+            <fa-cell-group>
+                <fa-cell title="意见反馈" is-link="true" url="/pages/user/help/feedback/index">
+                    <view slot="icon" class="cell-icon icon-feedback">
+                        <image src="/themes/default/goods/feedback.png"
+                               mode="aspectFit" style="width:22px;height: 22px" />
+                    </view>
+                </fa-cell>
+            </fa-cell-group>
+        </fa-panel>
+        <fa-panel>
+            <fa-cell-group>
+                <fa-cell title="常见问题" is-link="true" bindtap="goExternalFaq">
+                    <view slot="icon" class="cell-icon icon-feedback">
+                        <image src="/themes/default/goods/feedback.png"
+                               mode="aspectFit" style="width:22px;height: 22px" />
+                    </view>
+                </fa-cell>
+            </fa-cell-group>
+        </fa-panel>
+        <!-- <view class="headline">常见问题</view>
+        <view class="help-list">
+        <block wx:for="{{list}}" wx:key="key" wx:for-index="index" wx:for-item="item">
+            <help-item>
+                <view class="help-item-inner">
+                    <view class="info">
+                        <view class="user" data-id="{{item.id}}" bindtap="goHelpDetail">
+                            <view class="quiz">
+                                <text class="question">{{item.title}}</text>
+                                <text class="answer">{{item.text}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </help-item>
+        </block>
+        </view> -->
+    </view>
+</view>

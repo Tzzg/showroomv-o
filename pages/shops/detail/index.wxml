@@ -1,0 +1,66 @@
+<view class="page-container">
+    <view class="page">
+        <view class="shop-info">
+            <block>
+              <view class="top-banner-section">
+                  <view class="page-video" wx:if="{{topElementType === 'video'}}">
+                      <video id="good_detail_top_video" src="{{shopTopVide.url}}" controls="controls" />
+                  </view>
+                  <swiper class="goods-image-swiper" wx:if="{{topElementType === 'images'}}" indicator-dots="true" autoplay="true" interval="5000" duration="500">
+                      <block wx:for="{{shopImages}}" wx:key="item">
+                          <swiper-item>
+                              <image src="{{item}}" data-url="{{item}}" mode="aspectFill" bindtap="bannerPreview"/>
+                          </swiper-item>
+                      </block>
+                  </swiper>
+                  <view class="video-images-switch" wx:if="{{hasVideoImages}}">
+                      <ul>
+                          <li
+                          class="{{topElementType==='video'? 'active':''}}"
+                          bindtap="videoImagesSwitch"
+                          data-bannerType="video"
+                          style="margin-right: 3px;">视频</li>
+                          <li
+                          class="{{topElementType==='images'? 'active':''}}"
+                          bindtap="videoImagesSwitch"
+                          data-bannerType="images"
+                          style="margin-left: 3px;">图片</li>
+                      </ul>
+                  </view>
+              </view>
+              <view class="shop-header">
+                <!-- <image class="shop-image" src="{{ shopImage }}"></image> -->
+                <view class="shop-name item">{{ shopName }}</view>
+                <view class="address item-icon-box item">
+                  <image class="icon" src="../../../themes/default/shops/location.png"></image>
+                  <text class="gray">{{ address }}</text>
+                </view>
+                <button
+                  type="warn"
+                  size="mini"
+                  loading="{{loading}}"
+                  plain="{{plain}}"
+                  disabled="{{followed}}"
+                  bindtap="onCollect"
+                >{{followText}}</button>
+              </view>
+              <view class="shop-desc">
+                <view class="headline">店铺信息</view>
+                <text>{{ shopInfo }}</text>
+                <view class="shop-owner-box">
+                  <view class="shop-name item-icon-box left">
+                    <image class="avatar icon" src="{{shopOwnerAvatar}}"></image>
+                    <text class="name-title">{{shopOwner}} (Shop Owner)</text>
+                  </view>
+                </view>
+              </view>
+              <view class="shop-products">
+                <view class="headline">销售产品</view>
+<view class="content-wrapper">
+<common-waterfall-goods id="water_fall_id" class="waterfall-list" d-value="{{dValue}}" listData="{{goods.list}}" wx:key=""  wx:for-item="item" bind:heightlog="heightlog"></common-waterfall-goods>
+</view>
+              </view>
+            </block>
+        </view>
+    </view>
+</view>
