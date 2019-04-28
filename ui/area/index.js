@@ -27,6 +27,12 @@ Component({
             value: 3
         }
     },
+    observers: {
+        'areaSelected': function (areaSelected) {
+            areaSelected === this.data.areaSelected
+            this.initDisplayList()
+        }
+    },
     data: {
         displayList: []
     },
@@ -86,8 +92,6 @@ Component({
             displayList[2] = areaList[selected[0]].childs[selected[1]].childs.map(function(item) {
                 return item.name;
             })
-
-            console.log('root hello region list', displayList, this.data.selected, this.data.areaSelected)
 
             this.setData({
                 displayList: displayList

@@ -81,6 +81,11 @@ Component({
             value: false
         }
     },
+    observers: {
+        'areaSelected': function (areaSelected) {
+            areaSelected === this.data.areaSelected
+        }
+    },
     methods: {
         onLoad() {
             console.log('middleware areaSelected', this.areaSelected)

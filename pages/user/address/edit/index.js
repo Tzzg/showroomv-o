@@ -21,7 +21,8 @@ Page({
         onLoaded: false,
         checked: true,
         areaList: [],
-        areaSelected: [2, 3, 3]
+        // areaSelected: [2, 3, 3]
+        areaSelected: []
 
     },
     async onLoad({ id }) {
@@ -44,40 +45,29 @@ Page({
         let cityArray = this.getArrayKey(info.province_id, 0, areaResult.list)
         let streetArray = this.getArrayKey(info.city_id, 1, cityArray)
         this.getArrayKey(info.area_id, 2, streetArray)
-
-        console.log('selectec area 123:', this.data.areaSelected)
     },
     getArrayKey(region_id, index, array) {
-        // array.findIndex((value, index, arr) => {
-        //     console.log('aadsfasdfsadfsdfsadf//:', value, index)
-        //     if (value.id === province_id) {
-        //         this.data.areaSelected[0] = index
-        //         let cityArray = value.childs
-
-        //         console.log('city array --', cityArray)
-
-        //     }
-        // })
         let childsArray
 
         for (let key in array) {
             if (array[key].id === region_id) {
                 this.data.areaSelected[index] = parseInt(key)
                 childsArray = array[key].childs
+
+                this.setData({
+                    areaSelected: this.data.areaSelected
+                })
             }
         }
 
-        console.log('abcccccc----//', childsArray)
         return childsArray
     },
     onAreaChange(e) {
-        console.log('fuck123', this.data.areaSelected)
         this.setData({
             area_id: e.detail.detail.ids[2]
         })
     },
     onAreaFocus(e) {
-        console.log('fuck', this.data.areaSelected)
         this.setData({
             areaSelected: this.data.areaSelected
         })
