@@ -139,6 +139,12 @@
                                mode="aspectFit" style="width:22px;height: 22px" />
                     </view>
                 </fa-cell>
+                 <fa-cell title="测试小程序跳转" >
+                    <view slot="icon" class="cell-icon" bindtap="toMiniO">
+                        <image src="/themes/default/goods/contact.png"
+                               mode="aspectFit" style="width:22px;height: 22px" />
+                    </view>
+                </fa-cell>
             </fa-cell-group>
         </fa-panel>
     </block>

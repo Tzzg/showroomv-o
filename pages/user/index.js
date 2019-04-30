@@ -8,6 +8,20 @@ Page({
         userInfo: null,
         stateNum: null,
     },
+    toMiniO(){
+      console.log(1);
+      wx.navigateToMiniProgram({
+        appId: 'wx09bb608fff74ed9a',
+        path: 'pages/index_new/index',
+        extraData: {
+          foo: 'bar'
+        },
+        envVersion: 'trial',
+        success(res) {
+          // 打开成功
+        }
+      })
+    },
     goOrderList(e) {
         wx.navigateTo({
             url: '/pages/order/list/index?state_type='+e.currentTarget.dataset.stateType

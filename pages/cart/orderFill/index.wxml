@@ -116,7 +116,9 @@
         <import src="../../../wxParse/wxParse.wxml"/>
           <view class="text">
               <view bindtap='tapPolicyCloseBtn' class="close_btn"></view>
-              <view class="hint1">《xxxxx》使用协议</view>
+              <view class="hint1">
+                <text>「ShowroomV殊晤」\n用户协议</text>
+              </view>
               <view class="hint2"><template is="wxParse" data="{{wxParseData:userPolicy.nodes}}"/></view>
           </view>
       </view>
