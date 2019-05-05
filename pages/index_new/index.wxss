@@ -1,93 +1,44 @@
-.list {
-    width: 98%;
-    column-count: 2;
-    column-gap: 10rpx;
-    margin: 0 auto;
+/* pages/others/waterfall/waterfall.wxss */
+
+.textview {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
-.card {
-    display: inline-block;
-    width: 98%;
-    height: 100%;
-    overflow: auto;
-    padding-top: 20rpx;
+.textview-single-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
 }
 
-.content {
-    width: 98%;
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto;
-}
-
-.left,
-.right {
-    width: 50%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-.item {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10rpx;
-}
-
-.item-img {
-    width: 100% !important;
-    height: 200rpx !important;
-}
-
-.header-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    background: #F8F8F8;
-}
-
-.header-wrapper .top-search {
+.top-search {
+    /* background: blue; */
+    border-bottom: 1px solid #fbfbfb;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04);
 }
 
-.content-wrapper {
-    margin-top: 93px;
+.top-search .page-goods-search section {
+    background-color: blue!important;
 }
 
-.section {
-    padding: 15rpx 12rpx;
-    /* box-shadow: 0 -2rpx 5rpx #555555; */
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04);
-}
-
-.scroll-view-item_H {
-    display: inline-block;
-    padding: 5rpx 30rpx;
-    font-size: 14px;
-    color: gray;
-    font-weight: bold;
-}
-
-.banner-sliders {
-    margin-bottom: 15px;
-}
-
-.shop-cate-list {
+.home-circles {
     display: flex;
     justify-content: space-between;
     padding: 15px 30px;
 }
 
-.shop-cate-list .shop-cate {
+.home-circles .circle {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 14px;
 }
 
-.shop-cate-list .shop-cate image {
+.home-circles .circle image {
     width: 60px;
     height: 60px;
     border-radius: 32px;
@@ -95,10 +46,118 @@
     margin-bottom: 8px;
 }
 
-.home-waterfall {
-    padding-top: 10px;
+.item_desc {
+    position: relative;
+    text-align: left;
+    padding: 5px 6px;
+    box-sizing: border-box;
 }
 
-.page-banner {
-    margin-top: -15px;
+.price-section {
+    display: flex;
+    justify-content: space-between;
+    color: #999999;
+    margin-top: 5px;
+}
+
+.price-section .price {
+    color: #ff2741;
+}
+
+.item-inner {
+    width: 94%;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 0 3px #888888;
+    border-radius: 3px;
+    font-size: 0;
+}
+
+.item-inner image {
+    /* width: 100%; */
+    border-radius: 3px;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+Page {
+    background: #fff;
+}
+
+.waterfall {
+    width: 100%;
+    position: relative;
+}
+
+.img_box {
+    width: 50%;
+    position: absolute;
+    text-align: center;
+    animation: fadeShow 1s;
+}
+
+.img_box image {
+    width: 100%;
+}
+
+.item_desc {
+    font-size: 24rpx;
+}
+
+.loading_box {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    z-index: 1000;
+    bottom: 30rpx;
+    left: 49%;
+}
+
+.loading_fade_circle {
+    width: 30rpx;
+    height: 30rpx;
+    background: #1ab394;
+    border-radius: 50%;
+    -webkit-animation: fading_circle 1s ease-out infinite alternate;
+    animation: fading_circle 1s ease-out infinite alternate;
+}
+
+@-webkit-keyframes fading_circle {
+    0% {
+        transform: scale(1.5);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(0.1);
+        opacity: 1;
+    }
+}
+
+@keyframes fading_circle {
+    0% {
+        transform: scale(1.5);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(0.1);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeShow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeShow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

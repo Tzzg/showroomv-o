@@ -17,7 +17,6 @@ Page({
         address: '',
         is_default: 1,
         combine_detail: null,
-
         onLoaded: false,
         checked: true,
         areaList: []

@@ -19,34 +19,38 @@
   </view>
 </login-view>
 </view>
-<!-- 列表 -->
 
-<view class="content-wrapper" hidden='{{isLoading}}'>
+<view class="content-wrapper">
   <block wx:if="{{adCircleDisplay}}">
-  <login-view class="sub btn-collect" bind:success="onLoginSuccess">
-  <view class="banner-sliders">
-    <page-banner dataSource="{{banners}}" bind:click="onBannerClick"/>
-  </view>
-  <view class="shop-cate-list">
+    <view class="banner-sliders">
+      <page-banner dataSource="{{banners}}" bind:click="onBannerClick"/>
+    </view>
+  </block>
+  <view class="home-circles" wx:if="{{adCircleDisplay}}">
     <block wx:for="{{homeCircles}}" wx:key="item" wx:for-index="index">
-      <view class="shop-cate" data-id="{{item.cate_id}}" data-index="{{index}}" data-category-id="{{item.cate_id}}" bindtap="style3CategoryClick">
+      <view class="circle" data-id="{{item.cate_id}}" data-index="{{index}}" data-category-id="{{item.cate_id}}" bindtap="style3CategoryClick">
         <image src="{{item.img}}"></image>
         <text>{{item.title}}</text>
       </view>
     </block>
   </view>
-  </login-view>
-  </block>
-  <view class="home-waterfall">
-  <login-view class="sub btn-collect" bind:success="onLoginSuccess">
-    <common-waterfall-goods id="water_fall_id" class="waterfall-list" d-value="{{dValue}}" listData="{{style3.list}}" wx:key="item.id"  wx:for-item="item" bind:heightlog="heightlog"></common-waterfall-goods>
-  </login-view>
-  </view>
-  <view style='height: 200rpx; text-align: center; line-height: 1; padding: 20px 0; font-size: 28rpx; color: #999;'>
-    <text hidden='{{!style3.noMore}}'>没有更多</text>
-  </view>
 </view>
-<!-- loading -->
-<view style='height: 200rpx; text-align: center; line-height: 1; padding: 86rpx 0; font-size: 28rpx; color: #999; padding-top: 120px;'>
-  <text hidden='{{!isLoading}}'>正在加载...</text>
+<view class="waterfall">
+  <navigator url="/pages/goods/detail/index?id={{item.id}}" wx:for="{{list}}">
+    <view class="img_box" style="top:{{item.top}}px;left:{{item.left}}px">
+      <view class="item-inner">
+        <image src="{{item.image}}" mode="widthFix" bindload="loadImage" data-index="{{index}}"></image>
+        <view class="item_desc textview-single-line" style="height:{{descHeight}}px">
+          {{item.title}}
+          <view class="price-section">
+            <view class="price">{{item.price}}</view>
+            <view class="price-europe">{{item.price_original}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>
+<view class="loading_box" wx:if="{{pageStatus}}" style="top:{{(leftHeight>rightHeight?leftHeight:rightHeight)+360}}px">
+  <view class="loading_fade_circle"></view>
 </view>

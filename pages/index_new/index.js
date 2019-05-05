@@ -4,47 +4,23 @@ import PageModel from "../../models/page";
 import GoodsCategoryModel from "../../models/goodsCategory";
 import GoodsModel from "../../models/goods";
 
-import md5 from '../../utils/js-md5'
-import helper from '../../utils/helper'
-
 const pageModel = new PageModel()
 const categoryModel = new GoodsCategoryModel()
 const goodsModel = new GoodsModel()
-
+    // pages/others/waterfall/waterfall.js
 Page({
     data: {
-        pageData: null,
-        backgroundColor: '#f8f8f8',
-        hasMask: true,
-        user_policy: '',
-        banners: {
-            options: { layout_style: 1 },
-            data: [],
-        },
-        homeCircles: [{
-                title: "好店",
-                img: 'http://imageqiniu.laosiji.com/FliipUSBdPdPhdXjNN1GNHKtbM74',
-                shopCateId: 3
-            },
-            {
-                title: "市集",
-                img: 'http://imageqiniu.laosiji.com/FliipUSBdPdPhdXjNN1GNHKtbM74',
-                shopCateId: 5
-            },
-            {
-                title: "品牌馆",
-                img: 'http://imageqiniu.laosiji.com/FliipUSBdPdPhdXjNN1GNHKtbM74',
-                shopCateId: 8
-            }
-        ],
-        listHomeProductsData: null,
-        wrapperHeight: 0, // 需要更新的最外层盒子高度
-        list: [], // 模拟数据
-        dValue: 0.1, // 列表高度差
-        isLoading: false, // 阻止无限触发加载阈值
+        list: [],
+        leftHeight: 0,
+        rightHeight: 0,
+        vSpaceHeight: 9,
+        length: 5,
+        pageNo: 1,
+        descHeight: 50, //图片文字描述的高度
+        pageStatus: true, // last section
         style3: {
             page: 1,
-            rows: 10,
+            rows: 5,
             noMore: false,
             list: [],
             style: 3,
@@ -53,70 +29,11 @@ Page({
             categoryId: null,
             categoryClickIndex: -1
         },
-        goodsCateClick: false,
-        adCircleDisplay: true
-    },
-    tapAgreeBtn() {
-        this.setData({
-            hasMask: false
-        })
-    },
-    heightlog(e) {
-        this.setData({ dValue: e.detail })
-    },
-    onLoad() {
-        wx.showShareMenu({
-            withShareTicket: true
-        })
-        this.initPage()
-        this.style3GetGoodsList()
-    },
-    onBannerClick(e) {
-        const dataSource = e.detail.dataSource
-        const info = dataSource.data[e.detail.index]
-        this.handelLink(info.link)
-    },
-    onGridNavBarClick(e) {
-        const dataSource = e.detail.dataSource
-        const info = dataSource.data[e.detail.index]
-        this.handelLink(info.link)
-    },
-    onGoodsClick(e) {
-        const dataSource = e.detail.dataSource
-        const goods = dataSource.data[e.detail.index]
-        const link = {
-            action: 'goods',
-            param: {
-                id: goods.id
-            }
-        }
-        this.handelLink(link)
-    },
-    onIconNavClick(e) {
-        const dataSource = e.detail.dataSource
-        const info = dataSource.data[e.detail.index]
-        this.handelLink(info.link)
-    },
-    onTextNavClick(e) {
-        const dataSource = e.detail.dataSource
-        const info = dataSource.data[e.detail.index]
-        this.handelLink(info.link)
-    },
-    onShopWindowClick(e) {
-        const dataSource = e.detail.dataSource
-        const info = dataSource.data[e.detail.index]
-        this.handelLink(info.link)
-    },
-    onSearchClick() {
-        wx.navigateTo({
-            url: `/pages/goods/search/index`
-        })
     },
     async initPage() {
         const page = await pageModel.portal()
 
         this.setData({
-            backgroundColor: page.background_color,
             banners: {
                 options: { layout_style: 1 },
                 data: page.home_slider
@@ -169,7 +86,21 @@ Page({
             if (result.list.length === 0) {
                 data['noMore'] = true
             }
+
+            if (result.list.length > 0 && result.list.length < 5) {
+                // let filledArray = this.fillEmptyArray(5 - result.list.length)
+                // result.list = result.list.concat(filledArray)
+
+                this.setData({
+                    length: result.list.length
+                })
+            } else {
+                this.setData({
+                    length: 5
+                })
+            }
             data['list'] = list.concat(result.list)
+
             this.setData({
                 style3: {
                     ...this.data.style3,
@@ -177,29 +108,11 @@ Page({
                 }
             })
 
-            this.setData({ isLoading: false })
+            this.setData({
+                list: list.concat(result.list),
+                isLoading: false
+            })
         }
-
-        if (this.data.goodsCateClick) {
-            this.setData({ isLoading: false })
-                // this.selectComponent('#water_fall_id').data.initlist = {}
-                // this.selectComponent('#water_fall_id').data.list = {}
-
-
-            // if (getCurrentPages().length != 0) {
-            //     //刷新当前页面的数据
-            //     getCurrentPages()[getCurrentPages().length - 1].onLoad()
-            // }
-
-            // this.selectComponent('#water_fall_id').data.initlist = this.selectComponent('#water_fall_id').data.images
-            this.selectComponent('#water_fall_id').data.list = this.selectComponent('#water_fall_id').data.images
-
-            this.data.goodsCateClick = false
-        }
-
-        // this.selectComponent('#water_fall_id').data.initlist = this.selectComponent('#water_fall_id').data.images
-        // this.selectComponent('#water_fall_id').data.list = this.selectComponent('#water_fall_id').data.images
-
     },
     style3CategoryClick(e) {
         this.setData({
@@ -207,18 +120,91 @@ Page({
             'style3.categoryId': e.currentTarget.dataset.categoryId,
             'style3.categoryClickIndex': parseInt(e.currentTarget.dataset.index),
             'goodsCateClick': true,
-            'style3.noMore': false
+            'style3.noMore': false,
+            'list': [],
+            'leftHeight': 0,
+            'rightHeight': 0,
+            'pageNo': 1
         })
         this.style3GetGoodsList()
     },
-    onPullDownRefresh() {
-        this.initPage()
-        wx.stopPullDownRefresh()
-    },
-    onLoginSuccess() {
-        this.setData({
-            userInfo: fa.cache.get('user_info')
+    onSearchClick() {
+        wx.navigateTo({
+            url: `/pages/goods/search/index`
         })
+    },
+    onBannerClick(e) {
+        const dataSource = e.detail.dataSource
+        const info = dataSource.data[e.detail.index]
+        this.handelLink(info.link)
+    },
+    onLoad: function() {
+        this.setData({
+            list2: this.data.list
+        });
+
+        wx.showShareMenu({
+            withShareTicket: true
+        })
+        this.initPage()
+        this.style3GetGoodsList()
+    },
+    loadImage: function(e) {
+        let vm = this;
+        let windowWidth = wx.getSystemInfoSync().windowWidth;
+        let screenWidthHalf = windowWidth / 2 * 0.94;
+        let objImageHeight = screenWidthHalf * e.detail.height / e.detail.width
+
+        let index = e.currentTarget.dataset.index;
+        // vm.data.list[index].height = Math.round(windowWidth / 2 / e.detail.width * e.detail.height);
+        vm.data.list[index].height = Math.round(objImageHeight);
+
+        let count = 0;
+        let perPage = 5;
+        for (var i = (vm.data.pageNo - 1) * perPage; i < vm.data.list.length; i++) {
+            if (vm.data.list[i].height) {
+                count++;
+            }
+        }
+
+        if (count == vm.data.length) {
+
+            for (var i = (vm.data.pageNo - 1) * perPage; i < vm.data.list.length; i++) {
+                if (vm.data.leftHeight <= vm.data.rightHeight) {
+                    vm.data.list[i].top = vm.data.leftHeight + vm.data.vSpaceHeight;
+                    vm.data.list[i].left = windowWidth * 0.005;
+                    vm.setData({
+                        leftHeight: Math.round(vm.data.leftHeight + vm.data.list[i].height + vm.data.descHeight + vm.data.vSpaceHeight)
+                    });
+                    console.log('test left', vm.data.leftHeight)
+                } else {
+                    vm.data.list[i].top = vm.data.rightHeight + vm.data.vSpaceHeight;
+                    vm.data.list[i].left = windowWidth / 2 - windowWidth * 0.005;
+                    vm.setData({
+                        rightHeight: Math.round(vm.data.rightHeight + vm.data.list[i].height + vm.data.descHeight + vm.data.vSpaceHeight)
+                    });
+                    console.log('test right', vm.data.rightHeight)
+                }
+            }
+            vm.setData({
+                list: vm.data.list
+            });
+
+        }
+    },
+    onReachBottom: function() {
+        var vm = this;
+        vm.setData({
+            pageStatus: true
+        });
+        setTimeout(() => {
+            this.style3GetGoodsList()
+            vm.setData({
+                pageNo: vm.data.pageNo + 1,
+                // list: vm.data.list.concat(vm.data.list2),
+                pageStatus: false
+            });
+        }, 2000);
     },
     async handelLink(link) {
         switch (link.action) {
@@ -260,19 +246,13 @@ Page({
                 break
         }
     },
-    async onReachBottom() {
-        // water fall
-        if (this.data.style3.noMore === true) {
-            return false
-        } else {
-            this.style3GetGoodsList()
+    fillEmptyArray: function(num) {
+        let arr = []
+
+        for (var i = 0; i < num; i++) {
+            arr.push(i)
         }
-    },
-    onShareAppMessage: function() {
-        const shopInfo = fa.cache.get('shop_info')
-        return {
-            title: shopInfo.name,
-            path: `/pages/index/index`
-        }
+
+        return arr
     }
 })
