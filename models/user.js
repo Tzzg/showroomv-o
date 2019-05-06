@@ -1,7 +1,10 @@
 import regeneratorRuntime from '../libs/regenerator-runtime/runtime-module'
 import { api, request } from '../api';
 import Model from '../utils/model'
-import { UserEvaluatedListInterface, UserSelfInterface, UserTokenInfoInterface, UserCertInfoInterface, UserProfileInfoInterface, UserPolicyInterface } from '../interface/user'
+import { UserEvaluatedListInterface, UserSelfInterface, 
+    UserTokenInfoInterface, UserCertInfoInterface, 
+    UserProfileInfoInterface, UserPolicyInterface, 
+    UserCheckStatusInterface } from '../interface/user'
 
 export default class User extends Model {
     constructor(){
@@ -188,7 +191,6 @@ export default class User extends Model {
     }
     async sendUserPolicy(params) {
         try {
-          console.log(api.user.policy)
             const { result } = await request(api.user.policy, { data: params })
             return new UserPolicyInterface(result)
         } catch (e) {
@@ -196,5 +198,13 @@ export default class User extends Model {
             return false
         }
     }
-
+    async getUserCheckStatus() {
+        try {
+              const { result } = await request(api.user.checkStatus)
+              return new UserCheckStatusInterface(result)
+          } catch (e) {
+              this.setException(e)
+              return false
+          }
+    }
 }

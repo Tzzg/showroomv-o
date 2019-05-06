@@ -3,11 +3,13 @@ import regeneratorRuntime from '../../libs/regenerator-runtime/runtime-module'
 import PageModel from "../../models/page";
 import GoodsCategoryModel from "../../models/goodsCategory";
 import GoodsModel from "../../models/goods";
+import UserModel from "../../models/user";
 
 const pageModel = new PageModel()
 const categoryModel = new GoodsCategoryModel()
 const goodsModel = new GoodsModel()
-    // pages/others/waterfall/waterfall.js
+const userModel = new UserModel()
+
 Page({
     data: {
         list: [],
@@ -114,6 +116,22 @@ Page({
             })
         }
     },
+    goGoodsDetail(e) {
+        // wx.navigateToMiniProgram({
+        //     appId: '',
+        //     path: 'page/index/index?id=123',
+        //     extraData: {
+        //         foo: 'bar'
+        //     },
+        //     envVersion: 'develop',
+        //     success(res) {
+        //         // 打开成功
+        //     }
+        // })
+        wx.navigateTo({
+            url: '/pages/goods/detail/index?id=' + e.currentTarget.dataset.id
+        })
+    },
     style3CategoryClick(e) {
         this.setData({
             'style3.page': 1,
@@ -205,6 +223,23 @@ Page({
                 pageStatus: false
             });
         }, 2000);
+    },
+    onPullDownRefresh() {
+        this.initPage()
+        wx.stopPullDownRefresh()
+    },
+    onLoginSuccess() {
+        this.setData({
+            userInfo: fa.cache.get('user_info')
+        })
+
+        this.getUserStatus()
+    },
+    async getUserStatus() {
+        // Get user status of policy, cert card process
+        const userStatusResult = await userModel.getUserCheckStatus()
+
+        console.log('user check status', userStatusResult)
     },
     async handelLink(link) {
         switch (link.action) {

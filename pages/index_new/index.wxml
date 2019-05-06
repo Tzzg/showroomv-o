@@ -21,22 +21,25 @@
 </view>
 
 <view class="content-wrapper">
-  <block wx:if="{{adCircleDisplay}}">
-    <view class="banner-sliders">
-      <page-banner dataSource="{{banners}}" bind:click="onBannerClick"/>
-    </view>
-  </block>
-  <view class="home-circles" wx:if="{{adCircleDisplay}}">
-    <block wx:for="{{homeCircles}}" wx:key="item" wx:for-index="index">
-      <view class="circle" data-id="{{item.cate_id}}" data-index="{{index}}" data-category-id="{{item.cate_id}}" bindtap="style3CategoryClick">
-        <image src="{{item.img}}"></image>
-        <text>{{item.title}}</text>
+  <login-view class="sub btn-collect" bind:success="onLoginSuccess">
+    <block wx:if="{{adCircleDisplay}}">
+      <view class="banner-sliders">
+        <page-banner dataSource="{{banners}}" bind:click="onBannerClick"/>
       </view>
     </block>
-  </view>
+    <view class="home-circles" wx:if="{{adCircleDisplay}}">
+      <block wx:for="{{homeCircles}}" wx:key="item" wx:for-index="index">
+        <view class="circle" data-id="{{item.cate_id}}" data-index="{{index}}" data-category-id="{{item.cate_id}}" bindtap="style3CategoryClick">
+          <image src="{{item.img}}"></image>
+          <text>{{item.title}}</text>
+        </view>
+      </block>
+    </view>
+  </login-view>
 </view>
 <view class="waterfall">
-  <navigator url="/pages/goods/detail/index?id={{item.id}}" wx:for="{{list}}">
+<login-view class="sub btn-collect" bind:success="onLoginSuccess">
+  <detail bind:click="goGoodsDetail" data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{list}}">
     <view class="img_box" style="top:{{item.top}}px;left:{{item.left}}px">
       <view class="item-inner">
         <image src="{{item.image}}" mode="widthFix" bindload="loadImage" data-index="{{index}}"></image>
@@ -49,7 +52,8 @@
         </view>
       </view>
     </view>
-  </navigator>
+  </detail>
+</login-view>
 </view>
 <view class="loading_box" wx:if="{{pageStatus}}" style="top:{{(leftHeight>rightHeight?leftHeight:rightHeight)+360}}px">
   <view class="loading_fade_circle"></view>

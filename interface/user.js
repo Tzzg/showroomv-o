@@ -114,3 +114,18 @@ export class UserPolicyInterface extends Interface {
         }
     }
 }
+
+export class UserCheckStatusInterface extends Interface {
+    card_status;
+    agree_policy;
+
+    constructor(param) {
+        super()
+        try {
+            this.card_status = param.card_status
+            this.agree_policy = param.agree_policy
+        } catch (e) {
+            throw new Exception(e, 'UserCheckStatusInterface interface attribute error')
+        }
+    }
+}
