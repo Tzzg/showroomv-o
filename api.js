@@ -15,6 +15,11 @@ const svHost = 'https://os.showroomv.com/'
 const v1 = 'server_o/'
 const api = {
   user: {
+    checkStatus: {
+      // url: `${host}server/user/register`,
+      url: `${svHost}${v1}user/info/check_status`,
+      method: 'POST'
+    },
     policy: {
       // url: `${host}server/user/register`,
       url: `${svHost}${v1}user/info/policy`,
