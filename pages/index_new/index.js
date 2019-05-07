@@ -1,9 +1,10 @@
-import fa from "../../utils/fa";
+import fa from "../../utils/fa"
 import regeneratorRuntime from '../../libs/regenerator-runtime/runtime-module'
-import PageModel from "../../models/page";
-import GoodsCategoryModel from "../../models/goodsCategory";
-import GoodsModel from "../../models/goods";
-import UserModel from "../../models/user";
+import PageModel from "../../models/page"
+import GoodsCategoryModel from "../../models/goodsCategory"
+import GoodsModel from "../../models/goods"
+import UserModel from "../../models/user"
+import helper from "../../utils/helper"
 
 const pageModel = new PageModel()
 const categoryModel = new GoodsCategoryModel()
@@ -117,20 +118,25 @@ Page({
         }
     },
     goGoodsDetail(e) {
-        // wx.navigateToMiniProgram({
-        //     appId: '',
-        //     path: 'page/index/index?id=123',
-        //     extraData: {
-        //         foo: 'bar'
-        //     },
-        //     envVersion: 'develop',
-        //     success(res) {
-        //         // 打开成功
-        //     }
-        // })
-        wx.navigateTo({
-            url: '/pages/goods/detail/index?id=' + e.currentTarget.dataset.id
-        })
+        const existUserInfo = fa.cache.get('user_info')
+            // wx.navigateToMiniProgram({
+            //     appId: '',
+            //     path: 'page/index/index?id=123',
+            //     extraData: {
+            //         foo: 'bar'
+            //     },
+            //     envVersion: 'develop',
+            //     success(res) {
+            //         // 打开成功
+            //     }
+            // })
+
+        if (existUserInfo) {
+            wx.navigateTo({
+                url: '/pages/goods/detail/index?id=' + e.currentTarget.dataset.id
+            })
+        }
+
     },
     style3CategoryClick(e) {
         this.setData({
@@ -238,8 +244,15 @@ Page({
     async getUserStatus() {
         // Get user status of policy, cert card process
         const userStatusResult = await userModel.getUserCheckStatus()
+        let userCertCardStatus = userStatusResult.card_status
+        let userCertProgress = helper.userCertCardProgress(userCertCardStatus)
 
-        console.log('user check status', userStatusResult)
+        fa.cache.set('user_cert_progress', userCertProgress)
+        fa.cache.set('user_policy', false)
+
+        if (userStatusResult.agree_policy === 1) {
+            fa.cache.set('user_policy', true)
+        }
     },
     async handelLink(link) {
         switch (link.action) {

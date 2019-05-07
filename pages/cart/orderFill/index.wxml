@@ -103,7 +103,7 @@
                 <!-- <fa-button size="large" type="danger" formType="submit" bind:btnclick="onCreateOrder" disabled="{{!calculate}}">提交订单
                 </fa-button> -->
                 <form bindsubmit="onCreateOrder" report-submit="{{true}}">
-                    <button formType="submit" class="fa-btn fa-btn--danger">提交订单</button>
+                    <button formType="submit" class="fa-btn fa-btn--danger" disabled="{{buttonDisabled}}">提交订单</button>
                 </form>
             </view>
         </view>

@@ -7,9 +7,17 @@ Component({
             type: Object,
             value: null,
             observer: function(newVal, oldVal, changedPath) {
+
+                let timestampCurrent = Date.parse(new Date())
+                timestampCurrent = timestampCurrent / 1000
+                console.log("当前时间戳为：" + timestampCurrent)
                 this.setData({
-                    images: newVal
+                    images: newVal,
+                    timestamp: timestampCurrent
                 })
+
+                console.log('//--// waterfall inside', this.data.images)
+                    // console.log('//---/// waterfall inside: ', this.data.images)
             }
         },
         dValue: {
@@ -32,6 +40,7 @@ Component({
 
     // 组件的初始数据
     data: {
+        timestamp: 0,
         windowWidth: 0, // 屏幕宽度
         HValue: 0, // 上一个列表高度差
         // gap: 15, // 元素之间间隔

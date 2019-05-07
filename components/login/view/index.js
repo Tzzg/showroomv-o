@@ -6,16 +6,16 @@ Component({
     externalClasses: ['mask-class', 'container-class'],
     properties: {},
     data: {
-        userInfo : null,
+        userInfo: null,
         scopeUserInfo: false
     },
     ready() {
         const userInfo = fa.cache.get('user_info')
-        if(userInfo){
+        if (userInfo) {
             this.setData({
                 userInfo
             })
-        }else{
+        } else {
             const self = this
             wx.getSetting({
                 success: (res) => {
@@ -39,7 +39,7 @@ Component({
             const self = this
             if (this.data.scopeUserInfo === true || (e.type === 'getuserinfo' && e.detail.errMsg === 'getUserInfo:ok')) {
                 const loginLogic = new LoginLogic({
-                    success: function (result) {
+                    success: function(result) {
                         if (result.code === 1) {
                             self.setData({
                                 userInfo: fa.cache.get('user_info')

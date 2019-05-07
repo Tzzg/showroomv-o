@@ -54,7 +54,7 @@ Page({
     async getCertInfo() {
         const result = await userModel.certInfo()
         let certCode = result.cert_code
-        let certCodeStar = certCode.substr(0, certCode.length - 4) + '****'
+        let certCodeStar = (certCode) ? certCode.substr(0, certCode.length - 4) + '****' : ''
 
         if (result) {
             this.setData({

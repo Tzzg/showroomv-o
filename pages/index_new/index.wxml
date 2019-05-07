@@ -39,7 +39,7 @@
 </view>
 <view class="waterfall">
 <login-view class="sub btn-collect" bind:success="onLoginSuccess">
-  <detail bind:click="goGoodsDetail" data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{list}}">
+  <detail bindtap="goGoodsDetail" data-id="{{item.id}}" wx:key="{{item.id}}" wx:for="{{list}}">
     <view class="img_box" style="top:{{item.top}}px;left:{{item.left}}px">
       <view class="item-inner">
         <image src="{{item.image}}" mode="widthFix" bindload="loadImage" data-index="{{index}}"></image>

@@ -37,7 +37,9 @@
 <view class="banner-sliders">
   <page-banner dataSource="{{banners}}" bind:click="onBannerClick"/>
 </view>
+<view hidden='{{isLoading}}'>
 <common-waterfall-shops id="waterfall_shops_id" class="waterfall-list" d-value="{{dValue}}" listData="{{shops.list}}" wx:key=""  wx:for-item="item" ></common-waterfall-shops>
+</view>
 </login-view>
 </view>
 <!-- loading -->

@@ -1,6 +1,6 @@
 <!--template/list/list.wxml-->
 
-<image wx:for="{{images}}" data-index='{{index}}'  wx:key="" src="{{item.image}}" hidden bindload="imgOnload"></image>
+<image wx:for="{{images}}" data-index='{{index}}'  wx:key="item.id" src="{{item.image}}" hidden bindload="imgOnload"></image>
 
 <view class="img-group shops-item-box" style='height: {{wrapperHeight}}px'>
   <view class='img-wrapper' wx:for="{{list}}" wx:key="id" id="{{item.id}}" wx:key="" style="width: calc(50% - {{3*gap/2}}px); top: {{item.top}}px; left: {{item.left}}px">
